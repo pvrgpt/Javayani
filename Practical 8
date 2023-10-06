@@ -1,0 +1,122 @@
+//1
+class max_heap:
+    def __init__(self):
+        self.h_list=[0]
+        self.size=0
+
+    def insert(self,n):
+        self.h_list.append(n)
+        self.size=self.size + 1
+        self.build_heap(self.h_list)
+        print(self.h_list)
+
+    def heapify(self,i):
+        size=self.size
+        left=2*i+1
+        right=2*i+2
+        maximum=i
+
+        if(left<size) and self.h_list[left]>self.h_list[maximum]:
+            maximum=left
+        if(right<size) and self.h_list[right]>self.h_list[maximum]:
+            maximum=right
+        if maximum != i:
+            #swap
+            temp=self.h_list[i]
+            self.h_list[i]=self.h_list[maximum]
+            self.h_list[maximum]=temp
+            self.heapify(maximum)
+
+    def build_heap(self,list1):
+        self.h_list=list1[:]
+        i=int((len(self.h_list)/2)-1)
+        self.size=len(self.h_list)
+        while(i>=0):
+            self.heapify(i)
+            i=i-1
+
+heap=max_heap()
+list1=[]
+ch=int(input("1. Insertion in heap \n 2. Build heap \n 3. Display \n 4. Enter a new element in heap\n"))
+while ch<5:
+    if ch == 1:
+        n=int(input("Enter number of elements"))
+        while(n>0):
+            val=int(input("Enter elements"))
+            list1.append(val)
+            n=n-1
+    
+    if ch == 2:
+        heap.build_heap(list1)
+    
+    if ch == 3:
+        print(heap.h_list)
+    
+    if ch ==4 :
+        val=int(input("Enter a new element in heap"))
+        list1.append(val)
+        heap.insert(val)
+    
+    ch=int(input("Enter your choice: "))
+
+
+//2
+class min_heap:
+    def __init__(self):
+        self.h_list=[0]
+        self.size=0
+
+    def insert(self,n):
+        self.h_list.append(n)
+        self.size=self.size + 1
+        self.build_heap(self.h_list)
+        print(self.h_list)
+
+    def heapify(self,i):
+        size=self.size
+        left=2*i+1
+        right=2*i+2
+        minimum=i
+
+        if(left<size) and self.h_list[left]<self.h_list[minimum]:
+            minimum=left
+        if(right<size) and self.h_list[right]<self.h_list[minimum]:
+            minimum=right
+        if minimum != i:
+            #swap
+            temp=self.h_list[i]
+            self.h_list[i]=self.h_list[minimum]
+            self.h_list[minimum]=temp
+            self.heapify(minimum)
+
+    def build_heap(self,list1):
+        self.h_list=list1[:]
+        i=int((len(self.h_list)/2)-1)
+        self.size=len(self.h_list)
+        while(i>=0):
+            self.heapify(i)
+            i=i-1
+
+heap=min_heap()
+list1=[]
+ch=int(input("1. Insertion in heap:  \n 2. Build heap \n 3. Display \n 4. Enter a new element in heap: \n"))
+while ch<5:
+    if ch == 1:
+        n=int(input("Enter number of elements: "))
+        while(n>0):
+            val=int(input("Enter elements: "))
+            list1.append(val)
+            n=n-1
+    
+    if ch == 2:
+        heap.build_heap(list1)
+    
+    if ch == 3:
+        print(heap.h_list)
+    
+    if ch ==4 :
+        val=int(input("Enter a new element in heap: "))
+        list1.append(val)
+        heap.insert(val)
+    
+    ch=int(input("Enter your choice: "))
