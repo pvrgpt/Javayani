@@ -1,0 +1,173 @@
+AIM: Write a program to create a single linked list and display the node
+elements in reverse order.
+
+class Node:
+    def __init__(self,data):
+        self.info=data
+        self.next=None
+
+class SinglyLinkedList:
+    def __init__(self):
+        self.begin=None
+
+    def insert(self,new_data):
+        #insertion of new mode at beginning
+        #create new mode
+        new_node=Node(new_data)
+        #make next of new mode at beginning
+        new_node.next=self.begin
+        #move the begin to point to new node
+        self.begin=new_node
+
+    def search(self,search_key):
+        current=self.begin
+        #loop till current not equal to none 
+        while current!=None:
+            if current.info==search_key:
+                return True
+            elif(current==None):
+                return False
+            else:
+                current=current.next
+
+    #class ends
+list=SinglyLinkedList()
+list.insert(10)
+list.insert(24)
+list.insert(11)
+list.insert(21)
+list.insert(14)
+
+if list.search(24):
+    print("search successfull")
+else:
+    print("Search Unsuccessfull")
+
+
+Aim2: Write a program to search the elements in the linked list and display the
+same
+
+class Node:
+    #constructor to initialise the node object
+    def __init__(self, data):
+        self.info = data
+        self.next = None
+class SLL:
+    #function to initialise to begin
+    def __init__(self):
+        self.begin = None
+    #function to reverse the linked list
+    def reverse(self):
+        prev = None
+        current = self.begin #1st node
+        while(current is not None):
+            next = current.next #In first round, 1st node is current node and 2nd node is current node
+            current.next = prev #Changing/reversing the link
+            prev = current
+            current = next
+        self.begin = prev #It is the last node, begin is pointing to last node
+    #Function to insert a new node at the beginning 
+    def insert(self, new_data):
+        new_node = Node(new_data)
+        new_node.next = self.begin
+        self.begin = new_node
+    #Function to print the Linked List 
+    def printList(self):
+        temp = self.begin
+        while(temp):
+            print(temp.info)
+            temp = temp.next
+mylist = SLL()
+mylist.insert(34)
+mylist.insert(20)
+mylist.insert(96)
+mylist.insert(10)
+mylist.insert(8)
+print("Given Linked List")
+mylist.printList()
+mylist.reverse()        
+print("\nReversed Linked List")
+mylist.printList()
+
+
+AIM: Write a program to create double linked list and sort the elements in the
+linked list.
+
+
+class Node:
+    def __init__(self, data):
+        self.info = data
+        self.previous = None
+        self.next = None
+
+class SortDLL:
+    def __init__(self):
+        self.begin = None
+        self.end = None
+
+    def addNode(self, data):
+        #Create a new node
+        newNode = Node(data)
+
+        ##If list is empty
+        if(self.begin == None):
+            #Both Begin and End will point to newNode
+            self.begin = self.end = newNode
+            #Begin's previous will point to newNode
+            self.begin.previous = None
+            #End's next will point to None as it is the last node of the list
+            self.end.next = None
+
+        else:
+            #newNode will be added after End 
+            self.end.next = newNode
+            #newNode's previous will point to end
+            newNode.previous = self.end
+            #newNode will become new End
+            self.end = newNode
+            #As it is last node end's next will point to None
+            self.end.next = None
+
+    def sortList(self):
+        #Check whether list is empty
+        if(self.begin == None):
+            return
+        else:
+            #Current will point to begin
+            current = self.begin
+            while(current.next != None):
+                #Index will point to node next to current
+                index = current.next
+                while(index != None):
+                    #If current's data is greater than index's data, swap the data of current and index
+                    if(current.info > index.info):
+                        current.info, index.info = index.info, current.info #swap
+                    index = index.next
+                current = current.next
+
+    def display(self):
+        #Node current will point to Begin
+        current = self.begin
+        if(self.begin == None):
+            print("List is empty!")
+            return
+        while(current != None):
+            #Prints each node by incrementing pointer
+            print(current.info)
+            current = current.next
+
+dll = SortDLL()
+dll.addNode(7)
+dll.addNode(1)
+dll.addNode(4)
+dll.addNode(5)
+dll.addNode(2)
+
+print("Original List: ")
+dll.display()
+dll.sortList()
+#Displaying a sorted list
+print("Sorted List: ")
+dll.display()
+#End of program
+
