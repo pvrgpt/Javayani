@@ -1,0 +1,76 @@
+Aim(A): Write a program to implement the collision technique.
+def display(arr,n):
+    for i in range(n):
+        print(arr[i],end= " ")
+
+def hashing(table,size,arr,N):
+    for i in range(N):
+
+        #Computing the hash value
+        hv= arr[i] % size
+
+        #Insert in the table if there is no collection
+        if (table[hv] == -1):
+            table[hv]= arr[i]
+
+        else:
+            #If there is a collision
+            for j in range(size):       #j is the probe value
+                #computing the new hash value
+                t=(hv + j) % size
+                if (table[t]== -1):
+                    table[t] = arr[i]
+                    break
+    display(table,N)
+
+arr=[60,80,76,85,92,73,101]
+N=7
+#size of the hash value
+L=7
+hash_table = [0] * 7
+#Initializing the hash table
+for i in range(L):
+    hash_table[i] = -1
+#Linear probing
+hashing(hash_table, L, arr, N)
+#END
+
+
+Aim(B): Write a program to implement the concept of quadratic probing.  
+
+def display(arr,n):
+    for i in range(n):
+        print(arr[i],end= " ")
+
+def hashing(table,size,arr,N):
+    for i in range(N):
+
+        #Computing the hash value
+        hv= arr[i] % size
+
+        #Insert in the table if there is no collection
+        if (table[hv] == -1):
+            table[hv]= arr[i]
+
+        else:
+            c1,c2=3,1
+            #if there is a collision
+            for j in range(size):       #j is the probe value
+                #computing the new hash value
+                t=(hv+(c1*j)+(c2*j**2))%size
+                if (table[t]== -1):
+                    table[t] = arr[i]
+                    break
+    display(table,L)
+
+arr=[33,101,93]
+N=3
+#size of the hash value
+L=10
+hash_table = [0] * 10
+#Initializing the hash table
+for i in range(L):
+    hash_table[i] = -1
+#Linear probing
+hashing(hash_table, L, arr, N)
+#END
