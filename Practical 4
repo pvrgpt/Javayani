@@ -1,0 +1,69 @@
+//Write a program a implement the concept of queue with insert, delete, display and exit operation
+class Python_list:
+    def __init__(self):
+        self.l=list()
+    def chk_if_empty(self):
+        if self.length() is 0:
+            return True
+        else:
+            return False
+
+    def enqueue(self,val):
+        self.l.append(val)
+    def length (self):
+        return len(self.l)
+    def dequeue(self):
+        if self.chk_if_empty():
+            return None
+        else:
+            value=self.l.pop(0)
+            return value
+    def show(self):
+        if self.chk_if_empty():
+            print("Queue is empty")
+        else:
+            print(self.l)                   
+
+q=Python_list()
+ch = int(input("1. Enqueue\n2. Dequeue\n3. Length of queue\n4. Check queue empty or not\n5. Display queue\n6. Exit"))
+while ch is not 7:
+    if ch is 1:
+        data =int(input("insert an element "))
+        q.enqueue(data)
+    if ch is 2:
+        data=q.dequeue()
+        if data is None:
+            print("queue is empty(underflow condition)")
+        else:
+            print("removed alement is ",data)
+    if ch is 3:
+        ln=q.length()
+        print("length of the queue is ",ln)
+    if ch is 4:
+        if(q.chk_if_empty() is True):
+            print("queue is empty ")
+        else:
+            print("queue isnot empty ")
+    if ch is 5:
+        q.show()
+    if ch is 6:
+        exit()
+    ch = int(input("enter your choice ")) 
+
+//2
+class circular_array:
+    def __init__(self,maxsize):
+        self.queue = list(range(maxsize))
+        self.front_end= -1
+        self.rear_end= -1
+        self.count=0
+    def chk_if_empty(self):
+        if self.count is 0:
+            return True
+        else: 
+            return False    
+    def chk_if_full(self):
+        if self.count == len(self.queue):
+            return True
+        else:
+            return False    
