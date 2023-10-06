@@ -1,0 +1,169 @@
+//1
+
+class dspl:
+    def create(self):
+        n=int(input("enter size of array:"))
+        while n>0:
+            val=int(input("enter elements:"))
+            list1.append(val)
+            n=n-1
+
+    def search(self):
+        key = int(input("enter element to be searched"))
+        if key in list1:
+            print("search successful!")
+        else :
+            print("search unsuccessful")
+
+    def sort(self):
+        i=0
+        while(i<len(list1)):
+            j=j+1
+            while(j<len(list1)):
+                if (list1[i]>list1[j]):
+                    temp = list1[j]
+                    list1[j]=list1[i]
+                    list[i]=temp
+
+            j=j+1
+        i=i+1
+        print("after sorting", self.display)    
+
+    def reverse(self):
+        new_list = list[::-1]
+        print("new_list")            
+
+
+ds = dspl()
+list1 = []
+ch = int(input("1. Create\n2. Display\n3. Search\n4. Sort\n5. Reverse\n6. exit\n"))  
+
+while(ch<6):
+    if ch==1:
+        ds.create()
+    if ch==2:
+        ds.display()
+    if ch==3:
+        ds.search()
+    if ch==4:
+        ds.sort()
+    if ch==5:
+        ds.reverse()
+    if ch==6:
+        ds.exit()
+                            
+
+AIMb: Read the 2 arrays from the user and merge them and display the elements in sorted order
+
+def mergeArrays (arr1,arr2,n1,n2):
+    arr3=[None]*(n1+n2)
+    #step1
+    i,j,k=0,0,0;
+    #step2
+    while i<n1 and j>n2:
+        #step3
+        if arr1[i] < arr2[j]:
+            arr3[k]=arr1[i]
+            k=k+1
+            i=i+1
+        else:
+            arr3[k]=arr2[j]
+            k=k+1
+            j=j+1
+            #step4 if part, store remaining elements of forst array 
+    while i<n1:
+        arr3[k]=arr1[i]
+        k=k+1
+        i=i+1
+    while j<n2:
+        arr3[k]=arr2[j]
+        k=k+1
+        j=j+1
+    print("Array after merging")
+    for i in range (n1+n2):
+        print(str(arr3[i]), end=" ")
+
+arr1=[10,12,20,23]#sortd array
+n1=len(arr1) 
+
+arr2=[13,20,29,88]
+n2=len(arr2)
+mergeArrays(arr1,arr2,n1,n2)
+
+
+Aim3:
+
+def display_matrix(matrix):
+    for i in range(0,m):
+        for j in range(0,n):
+            print(matrix[i][j],end=" ")
+        print("\n")
+
+def Add_matrix(matrix1,matrix):
+    for i in range(0,n):
+        for j in range(0,m):
+            res_matrix[i][j] = matrix1[i][j]+matrix2[i][j]
+    print("Matrix1")
+    display_matrix(matrix1)
+    print("Matrix2")
+    display_matrix(matrix2)
+    print("Resultant matrix after adding: ")
+    display_matrix(res_matrix)
+
+def Transpose_matrix(matrix1,matrix2):
+    print("Matrix 1")
+    display_matrix(matrix1)
+    print("Matrix 2")
+    display_matrix(matrix2)
+
+    for i in range(0,m):
+        for j in range(0,n):
+            res_matrix[j][i] = matrix1[i][j]
+    print("Transpose of matrix 1 is: ")
+    display_matrix(res_matrix)
+
+    for i in range(0,m):
+        for j in range(0,n):
+            res_matrix[j][i] = matrix2[i][j]
+    print("Transpose of matrix 2 is: ")
+    display_matrix(res_matrix)
+
+def multiplication_matrix(matrix1, matrix2):
+    for i in range(0,m):
+        for j in range(0,n):
+            for k in range(0,n):
+                res_matrix[i][j] +=matrix1[i][k] * matrix2[k][j]
+    print("Resultant matrix after multiplication is: ")
+    display_matrix(res_matrix)
+
+m = int(input("Enter number of rows: "))
+n = int(input("Enter number of columns: "))
+
+matrix1 = [[0 for j in range (0,n)] for i in range (0,m)]
+matrix2 = [[0 for j in range (0,n)] for i in range (0,m)]
+res_matrix = [[0 for j in range(0,n)] for i in range(0,m)]
+
+print("Enter elements of first matrix: ")
+
+for i in range(0, m):
+    for j in range(0, n):
+        matrix1[i][j] = int(input("Enter an element: "))
+
+print("Enter elements of second matrix: ")
+
+for i in range(0, m):
+    for j in range(0, n):
+        matrix2[i][j] = int(input("Enter an element: "))
+
+ch = int(input(" 1. Add two matrix\n 2. Transpose the matrix\n 3. Multiply the matrix\n 4. Exit\n"))
+
+while ch<4:
+    if(ch == 1):
+        Add_matrix(matrix1, matrix2)
+    if(ch == 2):
+        Transpose_matrix(matrix1, matrix2)
+    if(ch == 3):
+        multiplication_matrix(matrix1, matrix2)
+    if(ch >= 4):
+        exit()
+    ch = int(input("Enter your choice: "))
